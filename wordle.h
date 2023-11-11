@@ -41,6 +41,9 @@
 # define TRUE 1
 # define FALSE 0
 
+// max attempts
+# define MAX_ATTEMPTS 5
+
 // for the hash code
 typedef unsigned int	t_hash;
 
