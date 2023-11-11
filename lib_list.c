@@ -6,20 +6,36 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:26:42 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 02:25:23 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 16:13:03 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wordle.h"
 
-char	ft_strcmp(char *s1, char *s2)
+char	*list_get_value_by_index(t_list *list, int index)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	int	i;
+
+	i = 0;
+	while (i < index && list->next)
 	{
-		s1++;
-		s2++;
+		list = list->next;
+		i++;
 	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	return (list->value);
+}
+
+int	list_size(t_list *list)
+{
+	int	i;
+
+	i = 0;
+	while (list)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
 }
 
 //

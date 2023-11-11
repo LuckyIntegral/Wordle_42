@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:07:02 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 02:27:49 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 17:02:23 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include <sys/time.h>
 
 # define STDIN 0
 # define GNL_BUFFER 8
-# define TABLE_SIZE 8384
+# define TABLE_SIZE 4096
 
 // error messages
 # define MALLOC_FAIL "Error occured during aloc system call"
 # define OPEN_FAIL "Error occured during open system call"
+# define RANDOM_FAIL "Error occured during random call"
 
 // modes for get next line function, passed as second argument for the function
 # define READ 0
@@ -59,6 +61,9 @@ typedef struct s_hash_table
 	size_t	size;
 }	t_hash_table;
 
+// randominette
+char		*random_word(t_hash_table *database);
+
 // get next line and utils
 char		*get_next_line(int fd, int mode);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
@@ -85,9 +90,11 @@ void		table_destroy(t_hash_table *table);
 int			table_init(t_hash_table *table);
 
 // list lib
+char		*list_get_value_by_index(t_list *list, int index);
 int			list_contains(t_list *node, char *value, t_hash hash);
 void		list_add_front(t_list **list, t_list *node);
 t_list		*list_create(char *value);
 void		list_clean(t_list *node);
+int			list_size(t_list *list);
 
 #endif

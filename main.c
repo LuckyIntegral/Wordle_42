@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:09:56 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 02:44:29 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 17:10:55 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 int	main(void)
 {
 	t_hash_table	database;
+	char			*word;
 
 	if (table_init(&database) == FAILURE)
 		exit_program(MALLOC_FAIL);
 	parse_file(&database);
+	word = random_word(&database);
+	if (word == NULL)
+	{
+		table_destroy(&database);
+		exit_program(RANDOM_FAIL);
+	}
 
-	printf("Test 1 for hello %d\n", table_contains(&database, "HELLO"));
-	printf("Test 2 for hello %d\n", table_contains(&database, "WORLD"));
-	printf("Test 3 for hello %d\n", table_contains(&database, "SASKE"));
+	// frontend();
 
 	table_destroy(&database);
 	return (SUCCESS);

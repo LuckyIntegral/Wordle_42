@@ -4,7 +4,7 @@ RM		= rm -rf
 CFLAGS	= -Wall -Wextra -Werror -g -MD -MP
 
 SRCS	= main.c lib_list.c lib_table.c get_next_line.c get_next_line_utils.c \
-		parser.c error_exit.c
+		parser.c error_exit.c randominette.c
 
 OBJS_DIR	= objs
 OBJS		= $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
