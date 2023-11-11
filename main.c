@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:09:56 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 02:34:14 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 02:44:29 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	main(void)
 {
-	t_hash_table	table;
+	t_hash_table	database;
 
-	if (table_init(&table) == FAILURE)
+	if (table_init(&database) == FAILURE)
 		exit_program(MALLOC_FAIL);
-	parse_file(&table);
+	parse_file(&database);
 
-	printf("Test 1 for hello %d\n", table_contains(&table, "HELLO"));
-	printf("Test 2 for hello %d\n", table_contains(&table, "WORLD"));
-	printf("Test 3 for hello %d\n", table_contains(&table, "SASKE"));
+	printf("Test 1 for hello %d\n", table_contains(&database, "HELLO"));
+	printf("Test 2 for hello %d\n", table_contains(&database, "WORLD"));
+	printf("Test 3 for hello %d\n", table_contains(&database, "SASKE"));
 
-	table_destroy(&table);
+	table_destroy(&database);
 	return (SUCCESS);
 }
