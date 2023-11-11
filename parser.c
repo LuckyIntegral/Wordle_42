@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 01:31:53 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 02:43:08 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:00:09 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*trim_n_shift(char *str)
 	{
 		while (i < 5)
 		{
-			str[i] = str[i] - 32;
+			if (str[i] >= 'a' && str[i] <= 'z')
+				str[i] = str[i] - 32;
 			i++;
 		}
 		if (str[5])

@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:07:02 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 17:02:23 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:19:56 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@
 # define TRUE 1
 # define FALSE 0
 
+// for colors
+# define GRAY 0
+# define YELLOW 1
+# define GREEN 2
+
+// for some meta data
+# define ATTEMPS 6
+# define WORD_LEN 5
+
 // for the hash code
 typedef unsigned int	t_hash;
 
@@ -61,6 +70,9 @@ typedef struct s_hash_table
 	size_t	size;
 }	t_hash_table;
 
+// frontend part
+int			interact_player(t_hash_table *database, char *word);
+
 // randominette
 char		*random_word(t_hash_table *database);
 
@@ -69,6 +81,7 @@ char		*get_next_line(int fd, int mode);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 int			ft_contains(char *set, char c);
 char		*ft_strdup(const char *s1);
+char		*trim_n_shift(char *str);
 size_t		ft_strlen(const char *s);
 
 // parser part
@@ -96,5 +109,10 @@ void		list_add_front(t_list **list, t_list *node);
 t_list		*list_create(char *value);
 void		list_clean(t_list *node);
 int			list_size(t_list *list);
+
+// colors
+void	put_yellow(char c);
+void	put_green(char c);
+void	put_gray(char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:00:46 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 16:41:39 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:56:49 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	random_number(int range)
 
 	gettimeofday(&time, NULL);
 	result = time.tv_usec % range;
-	// printf("rand number result %d, range %d\n", result, range);
 	return (result);
 }
 
