@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:13:46 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 23:19:16 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:35:13 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,25 @@ void	print_header(void)
 void	print_colorful_string(char *word, char *guess)
 {
 	int	colors[5] = {GRAY, GRAY, GRAY, GRAY, GRAY};
+	int	checked[5] = {FALSE, FALSE, FALSE, FALSE, FALSE};
 
 	for (int i = 0; i < 5; i++)
 		if (guess[i] == word[i])
+		{
 			colors[i] = GREEN;
+			checked[i] = TRUE;
+		}
 	for (int i = 0; i < 5; i++)
 	{
 		if (!ft_contains(word, guess[i]) || colors[i] == GREEN)
 			continue ;
+
 		for (int j = 0; j < 5; j++)
-			if (colors[j] == GRAY && word[j] == guess[i])
+			if (colors[j] == GRAY && word[j] == guess[i] && checked[j] == FALSE)
+			{
 				colors[i] = YELLOW;
+				checked[j] = TRUE;
+			}
 	}
 	for (int i = 0; i < 5; i++)
 	{
@@ -75,8 +83,10 @@ int interact_player(t_hash_table *table, char *word)
 
 	i = 0;
 	print_header();
+	printf("Test string: %s\n", word);
 	while (i < ATTEMPS)
 	{
+		write(0, "Put your word here! ", 20);
 		str = get_next_line(STDIN, READ);
 		if (!str)
 			break ;
@@ -100,13 +110,15 @@ int interact_player(t_hash_table *table, char *word)
 				}
 			}
 			else
-				(free(str), printf("Word doesn't exist!\n"));
+				(free(str), printf("\n\033[1;31mWord doesn't exist!\033[0m\nPlease make sure that the input is correct\n\n"));
 		}
 		else
-			(free(str), printf("Not a valid one\n"));
+			(free(str), printf("\nNot a valid one!\nPlease make sure that the word contains only \033[1;31m FIVE ALPHABETIC \033[0m characters\n\n"));
 	}
 	if (!win)
-		printf("The word was %s\n", word);
+		printf("You lost, the word was \033[1;32m %s \033[0m 😓\nBetter luck net time!\n\n", word);
+	else
+	 	printf("🥳️ 🥳️ 🥳️\033[1;32mCongratulations, you won the game!!! 🥳️ 🥳️ 🥳️\033[0m\n\n");
 	for (int j = 0; j < i; j++)
 		free(history[j]);
 	get_next_line(STDIN, CLEAN);

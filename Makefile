@@ -27,6 +27,9 @@ fclean	:
 
 re		: fclean all
 
+play	: all
+		clear; ./wordle
+
 -include $(DEPS)
 
 .PHONY: all clean fclean re
