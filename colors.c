@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 23:09:56 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 18:17:46 by vfrants          ###   ########.fr       */
+/*   Created: 2023/11/11 21:07:32 by vfrants           #+#    #+#             */
+/*   Updated: 2023/11/11 22:19:39 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wordle.h"
 
-int	main(void)
+void	put_gray(char c)
 {
-	t_hash_table	database;
-	char			*word;
+	printf("\033[1;30m%c\033[0m", c);
+}
 
-	if (table_init(&database) == FAILURE)
-		exit_program(MALLOC_FAIL);
-	parse_file(&database);
-	word = random_word(&database);
-	if (word == NULL)
-	{
-		table_destroy(&database);
-		exit_program(RANDOM_FAIL);
-	}
-	interact_player(&database, word);
+void	put_yellow(char c)
+{
+    printf("\033[1;33m%c\033[0m", c);
+}
 
-	table_destroy(&database);
-	return (SUCCESS);
+void	put_green(char c)
+{
+    printf("\033[1;32m%c\033[0m", c);
 }

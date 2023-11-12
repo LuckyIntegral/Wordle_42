@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:00:46 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 16:41:39 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:01:10 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	random_number(int range)
 
 	gettimeofday(&time, NULL);
 	result = time.tv_usec % range;
-	// printf("rand number result %d, range %d\n", result, range);
 	return (result);
 }
 
@@ -40,7 +39,7 @@ char	*random_word(t_hash_table *database)
 	int		size;
 
 	list = NULL;
-	for (int i = 0; list == NULL && i < 10; i++)
+	while (list == NULL)
 		list = database->elements[random_number(database->size)];
 	if (list == NULL)
 		return (NULL);
