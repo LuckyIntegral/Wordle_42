@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:13:46 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/12 13:45:55 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/12 14:00:33 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	print_header(void)
 	printf("$$ | $$ | $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |$$   ____|\n");
 	printf("\\$$$$$\\$$$$  |\\$$$$$$  |$$ |      \\$$$$$$$ |$$ |\\$$$$$$$\\ \n");
 	printf(" \\_____\\____/  \\______/ \\__|       \\_______|\\__| \\_______|\n");
-	printf("\nThe rules part will be here soon!\n");
+    printf("\n\033[1;32m    Welcome to Wordle!\033[0m\n");
+    printf("You have \033[1;32m6\033[0m attempts to guess the word.\n");
+	printf("The word is \033[1;32m5\033[0m characters long and contain only \033[1;32m alphabetic \033[0m characters.\n");
+    printf("For each guess:\n");
+    printf("  - A correct letter in the correct place will be shown in \033[1;32mGREEN\033[0m!\n");
+    printf("  - A correct letter in the wrong place will be shown in \033[1;33mYELLOW\033[0m!\n");
+    printf("  - A wrong letter will be shown in \033[1;30mGRAY\033[0m!\n\n");
 }
 
 void	print_colorful_string(char *word, char *guess)
@@ -83,7 +89,6 @@ int interact_player(t_hash_table *table, char *word)
 
 	i = 0;
 	print_header();
-	printf("Test string: %s\n", word);
 	while (i < MAX_ATTEMPTS)
 	{
 		write(0, "Put your word here! ", 20);
