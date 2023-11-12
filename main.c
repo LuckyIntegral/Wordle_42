@@ -27,6 +27,7 @@ int	main(void)
 		exit_program(RANDOM_FAIL);
 	}
 	interact_player(&database, word);
+
 	table_destroy(&database);
 	return (SUCCESS);
 }

@@ -46,9 +46,9 @@
 # define YELLOW 1
 # define GREEN 2
 
-// for some meta data
-# define ATTEMPS 6
+// some useful data
 # define WORD_LEN 5
+# define MAX_ATTEMPTS 5
 
 // for the hash code
 typedef unsigned int	t_hash;
