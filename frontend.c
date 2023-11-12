@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:13:46 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/12 13:35:13 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:45:55 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int interact_player(t_hash_table *table, char *word)
 	i = 0;
 	print_header();
 	printf("Test string: %s\n", word);
-	while (i < ATTEMPS)
+	while (i < MAX_ATTEMPTS)
 	{
 		write(0, "Put your word here! ", 20);
 		str = get_next_line(STDIN, READ);
@@ -99,7 +99,7 @@ int interact_player(t_hash_table *table, char *word)
 				printf("\n");
 				for (int j = 0; j <= i; j++)
 					print_colorful_string(word, history[j]);
-				for (int j = i; j < ATTEMPS - 1; j++)
+				for (int j = i; j < MAX_ATTEMPTS - 1; j++)
 					printf("_ _ _ _ _\n");
 				printf("\n");
 				i++;
@@ -116,7 +116,7 @@ int interact_player(t_hash_table *table, char *word)
 			(free(str), printf("\nNot a valid one!\nPlease make sure that the word contains only \033[1;31m FIVE ALPHABETIC \033[0m characters\n\n"));
 	}
 	if (!win)
-		printf("You lost, the word was \033[1;32m %s \033[0m 😓\nBetter luck net time!\n\n", word);
+		printf("You lost, the word was \033[1;31m %s \033[0m 😓\nBetter luck net time!\n\n", word);
 	else
 	 	printf("🥳️ 🥳️ 🥳️\033[1;32mCongratulations, you won the game!!! 🥳️ 🥳️ 🥳️\033[0m\n\n");
 	for (int j = 0; j < i; j++)

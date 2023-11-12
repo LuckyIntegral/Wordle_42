@@ -6,7 +6,7 @@
 /*   By: vfrants <vfrants@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 23:07:02 by vfrants           #+#    #+#             */
-/*   Updated: 2023/11/11 22:19:56 by vfrants          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:44:45 by vfrants          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 // some useful data
 # define WORD_LEN 5
-# define MAX_ATTEMPTS 5
+# define MAX_ATTEMPTS 6
 
 // for the hash code
 typedef unsigned int	t_hash;
